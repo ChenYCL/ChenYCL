@@ -1,0 +1,419 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+<defs>
+<style>
+/* ══════════════════════════════════════════
+   CORE ANIMATIONS
+   ══════════════════════════════════════════ */
+@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+@keyframes driftR{0%{transform:translateX(-60px);opacity:0}25%{opacity:1}100%{transform:translateX(0);opacity:1}}
+@keyframes driftL{0%{transform:translateX(60px);opacity:0}25%{opacity:1}100%{transform:translateX(0);opacity:1}}
+@keyframes driftU{0%{transform:translateY(40px);opacity:0}30%{opacity:1}100%{transform:translateY(0);opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes floatS{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* ══════════════════════════════════════════
+   3D ROTATION — SACRED GEOMETRY
+   ══════════════════════════════════════════ */
+@keyframes rotate3D{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes rotateR{0%{transform:rotate(0deg)}100%{transform:rotate(-360deg)}}
+@keyframes pulse3D{0%,100%{transform:scale(1);opacity:.12}50%{transform:scale(1.08);opacity:.2}}
+@keyframes breathe{0%,100%{transform:scale(.95);opacity:.06}50%{transform:scale(1.05);opacity:.14}}
+
+/* ══════════════════════════════════════════
+   DATA FLOW — INK RIVER STREAMS
+   ══════════════════════════════════════════ */
+@keyframes flowA{0%{stroke-dashoffset:1200}100%{stroke-dashoffset:0}}
+@keyframes flowB{0%{stroke-dashoffset:800}100%{stroke-dashoffset:0}}
+@keyframes flowC{0%{stroke-dashoffset:600}100%{stroke-dashoffset:0}}
+@keyframes flowGlow{0%,100%{opacity:.15}50%{opacity:.35}}
+@keyframes nodeP{0%,100%{r:2.5;opacity:.5}50%{r:4.5;opacity:.9}}
+@keyframes nodeP2{0%,100%{r:2;opacity:.4}50%{r:3.5;opacity:.8}}
+@keyframes nodeRing{0%,100%{r:6;opacity:.15;stroke-width:1}50%{r:12;opacity:0;stroke-width:.3}}
+
+/* ══════════════════════════════════════════
+   PARTICLE FIELD — FIBONACCI DISTRIBUTION
+   ══════════════════════════════════════════ */
+@keyframes pUp{0%{opacity:0;transform:translateY(0)}15%{opacity:.7}85%{opacity:.25}100%{opacity:0;transform:translateY(-80px)}}
+@keyframes pDrift{0%{opacity:0;transform:translate(0,0)}20%{opacity:.5}80%{opacity:.2}100%{opacity:0;transform:translate(30px,-60px)}}
+@keyframes pSink{0%{opacity:0;transform:translateY(0)}20%{opacity:.4}80%{opacity:.15}100%{opacity:0;transform:translateY(40px)}}
+@keyframes sparkle{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:.8;transform:scale(1.2)}}
+
+/* ══════════════════════════════════════════
+   LANDSCAPE LAYERS
+   ══════════════════════════════════════════ */
+@keyframes moonGlow{0%,100%{opacity:.12}50%{opacity:.28}}
+@keyframes moonHalo{0%,100%{r:72;opacity:.06}50%{r:82;opacity:.12}}
+@keyframes birdA{0%{transform:translate(0,0)}25%{transform:translate(30px,-12px)}50%{transform:translate(65px,-5px)}75%{transform:translate(95px,-15px)}100%{transform:translate(130px,-8px)}}
+@keyframes birdB{0%{transform:translate(0,0)}33%{transform:translate(25px,-10px)}66%{transform:translate(55px,-4px)}100%{transform:translate(85px,-12px)}}
+@keyframes birdC{0%{transform:translate(0,0)}25%{transform:translate(20px,-8px)}50%{transform:translate(45px,-3px)}75%{transform:translate(60px,-11px)}100%{transform:translate(75px,-6px)}}
+@keyframes ripple{0%{rx:0;ry:0;opacity:.5}100%{rx:40;ry:5;opacity:0}}
+@keyframes ripple2{0%{rx:0;ry:0;opacity:.4}100%{rx:28;ry:3.5;opacity:0}}
+@keyframes ripple3{0%{rx:0;ry:0;opacity:.35}100%{rx:22;ry:3;opacity:0}}
+@keyframes waveShift{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
+@keyframes inkDrip{0%{transform:scaleY(0);opacity:0;transform-origin:top}60%{opacity:.5}100%{transform:scaleY(1);opacity:.25;transform-origin:top}}
+@keyframes sealStamp{0%{transform:scale(1.4) rotate(-5deg);opacity:0}50%{transform:scale(.96) rotate(1deg);opacity:.9}100%{transform:scale(1) rotate(0deg);opacity:.85}}
+@keyframes drawStroke{0%{stroke-dashoffset:500}100%{stroke-dashoffset:0}}
+
+/* ══════════════════════════════════════════
+   GOLDEN SPIRAL — ROTATING
+   ══════════════════════════════════════════ */
+@keyframes spiralSpin{0%{transform:rotate(0deg);opacity:.06}50%{opacity:.12}100%{transform:rotate(360deg);opacity:.06}}
+@keyframes spiralPulse{0%,100%{opacity:.04;transform:scale(1)}50%{opacity:.1;transform:scale(1.03)}}
+
+/* ══════════════════════════════════════════
+   HEXGRID — SUBTLE BACKGROUND
+   ══════════════════════════════════════════ */
+@keyframes hexFade{0%,100%{opacity:.02}50%{opacity:.06}}
+
+/* ══════════════════════════════════════════
+   WAVE SINE — INTERFERENCE PATTERN
+   ══════════════════════════════════════════ */
+@keyframes sineFlow{0%{stroke-dashoffset:300}100%{stroke-dashoffset:0}}
+@keyframes sineFlow2{0%{stroke-dashoffset:400}100%{stroke-dashoffset:0}}
+
+/* ══════════════════════════════════════════
+   CLASS BINDINGS
+   ══════════════════════════════════════════ */
+.bg{animation:fadeIn 2s ease-out forwards}
+.mtn-far{animation:fadeIn 3s ease-out .2s both}
+.mtn-mid{animation:fadeIn 2.5s ease-out .5s both}
+.mtn-near{animation:fadeIn 2s ease-out .8s both}
+.water{animation:fadeIn 2.2s ease-out 1s both}
+.nm{animation:driftR 3s cubic-bezier(.16,1,.3,1) 1.2s both,float 7s ease-in-out 4.2s infinite}
+.tl{animation:driftL 2.8s cubic-bezier(.16,1,.3,1) 1.6s both,floatS 8s ease-in-out 4.5s infinite}
+.tt{animation:driftU 2.5s cubic-bezier(.16,1,.3,1) 2s both,floatS 9s ease-in-out 4.8s infinite}
+.st{animation:driftU 2.5s cubic-bezier(.16,1,.3,1) 2.3s both}
+.mn{animation:fadeIn 3.5s ease-out .3s both}
+.mn-glow{animation:moonGlow 5s ease-in-out infinite}
+.mn-halo{animation:moonHalo 6s ease-in-out infinite}
+.ba{animation:birdA 15s linear 2.5s infinite}
+.bb{animation:birdB 18s linear 3.5s infinite}
+.bc{animation:birdC 20s linear 4.5s infinite}
+.rp1{animation:ripple 4s ease-out 2s infinite}
+.rp2{animation:ripple2 5s ease-out 3.5s infinite}
+.rp3{animation:ripple3 4.5s ease-out 5s infinite}
+.wv{animation:waveShift 6s ease-in-out infinite}
+.bamboo{animation:fadeIn 2.5s ease-out .8s both}
+.bleaf{animation:fadeIn 2s ease-out 1.2s both}
+.id1{animation:inkDrip 3.5s ease-out 1.8s both}
+.id2{animation:inkDrip 4s ease-out 2.2s both}
+.id3{animation:inkDrip 3s ease-out 2.6s both}
+.seal{animation:sealStamp .8s cubic-bezier(.16,1,.3,1) 3.2s both}
+.sd{stroke-dasharray:500;animation:drawStroke 3s ease-out 1.3s both}
+.sd2{stroke-dasharray:500;animation:drawStroke 2.5s ease-out 2.8s both}
+.verse{animation:fadeIn 3.5s ease-out 2.8s both}
+
+/* Sacred geometry */
+.geo1{animation:rotate3D 40s linear infinite}
+.geo2{animation:rotateR 55s linear infinite}
+.geo3{animation:pulse3D 8s ease-in-out infinite}
+.geo4{animation:breathe 10s ease-in-out infinite}
+
+/* Golden spiral */
+.spiral{animation:spiralSpin 90s linear infinite}
+.spiral2{animation:spiralPulse 12s ease-in-out infinite}
+
+/* Data flow */
+.fl-a{stroke-dasharray:15 8;animation:flowA 8s linear infinite}
+.fl-b{stroke-dasharray:12 6;animation:flowB 6s linear infinite}
+.fl-c{stroke-dasharray:10 5;animation:flowC 5s linear infinite}
+.fl-d{stroke-dasharray:18 10;animation:flowA 10s linear infinite}
+.fl-glow{animation:flowGlow 3s ease-in-out infinite}
+.nd{animation:nodeP 2.5s ease-in-out infinite}
+.nd2{animation:nodeP2 3s ease-in-out infinite}
+.nr{animation:nodeRing 2.5s ease-out infinite}
+
+/* Particles */
+.p-up{animation:pUp 6s ease-out infinite}
+.p-dr{animation:pDrift 7s ease-out infinite}
+.p-sk{animation:pSink 8s ease-out infinite}
+.p-sp{animation:sparkle 4s ease-in-out infinite}
+
+/* Hex grid */
+.hex{animation:hexFade 6s ease-in-out infinite}
+
+/* Sine waves */
+.sw1{stroke-dasharray:8 4;animation:sineFlow 4s linear infinite}
+.sw2{stroke-dasharray:6 3;animation:sineFlow2 5s linear infinite}
+</style>
+
+<!-- Gradients -->
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5f0e8"/><stop offset="35%" stop-color="#f0ebe0"/><stop offset="100%" stop-color="#e8dfd0"/></linearGradient>
+<linearGradient id="iw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3d3d5c" stop-opacity=".45"/><stop offset="100%" stop-color="#3d3d5c" stop-opacity=".06"/></linearGradient>
+<linearGradient id="iw2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2c2c3a" stop-opacity=".65"/><stop offset="100%" stop-color="#2c2c3a" stop-opacity=".12"/></linearGradient>
+<linearGradient id="iw3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1a2e" stop-opacity=".85"/><stop offset="100%" stop-color="#1a1a2e" stop-opacity=".18"/></linearGradient>
+<linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a0b0c0" stop-opacity=".25"/><stop offset="100%" stop-color="#c8d0d8" stop-opacity=".1"/></linearGradient>
+<linearGradient id="dfg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#8b4513" stop-opacity=".6"/><stop offset="50%" stop-color="#c23b22" stop-opacity=".4"/><stop offset="100%" stop-color="#8b4513" stop-opacity=".1"/></linearGradient>
+<linearGradient id="dfg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1a1a2e" stop-opacity=".3"/><stop offset="100%" stop-color="#8b4513" stop-opacity=".15"/></linearGradient>
+<radialGradient id="ndg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#c23b22" stop-opacity=".9"/><stop offset="100%" stop-color="#8b4513" stop-opacity=".2"/></radialGradient>
+<radialGradient id="ndg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f5e6c8" stop-opacity=".8"/><stop offset="100%" stop-color="#8b4513" stop-opacity=".1"/></radialGradient>
+
+<!-- Filters -->
+<filter id="ib"><feGaussianBlur stdDeviation="2"/></filter>
+<filter id="ib2"><feGaussianBlur stdDeviation="1"/></filter>
+<filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="inkTex" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.5" xChannelSelector="R" yChannelSelector="G"/></filter>
+</defs>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 0 — SKY + RICE PAPER             ║
+     ╚══════════════════════════════════════════╝ -->
+<rect class="bg" width="960" height="520" fill="url(#sky)"/>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 1 — HEXAGONAL GRID (DEPTH)       ║
+     ╚══════════════════════════════════════════╝ -->
+<g class="hex" opacity=".03">
+<path d="M200,80 L220,68 L240,80 L240,104 L220,116 L200,104Z" fill="none" stroke="#2c2c3a" stroke-width=".4"/>
+<path d="M240,80 L260,68 L280,80 L280,104 L260,116 L240,104Z" fill="none" stroke="#2c2c3a" stroke-width=".4"/>
+<path d="M280,80 L300,68 L320,80 L320,104 L300,116 L280,104Z" fill="none" stroke="#2c2c3a" stroke-width=".4"/>
+<path d="M220,104 L240,92 L260,104 L260,128 L240,140 L220,128Z" fill="none" stroke="#2c2c3a" stroke-width=".3"/>
+<path d="M260,104 L280,92 L300,104 L300,128 L280,140 L260,128Z" fill="none" stroke="#2c2c3a" stroke-width=".3"/>
+<path d="M500,50 L520,38 L540,50 L540,74 L520,86 L500,74Z" fill="none" stroke="#2c2c3a" stroke-width=".3"/>
+<path d="M540,50 L560,38 L580,50 L580,74 L560,86 L540,74Z" fill="none" stroke="#2c2c3a" stroke-width=".3"/>
+<path d="M520,74 L540,62 L560,74 L560,98 L540,110 L520,98Z" fill="none" stroke="#2c2c3a" stroke-width=".3"/>
+<path d="M660,100 L680,88 L700,100 L700,124 L680,136 L660,124Z" fill="none" stroke="#2c2c3a" stroke-width=".25"/>
+<path d="M700,100 L720,88 L740,100 L740,124 L720,136 L700,124Z" fill="none" stroke="#2c2c3a" stroke-width=".25"/>
+</g>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 2 — GOLDEN RATIO SPIRAL          ║
+     ╚══════════════════════════════════════════╝ -->
+<g transform="translate(680,200)">
+<g class="spiral" style="transform-origin:0 0">
+<path d="M0,0 C0,-21 17,-38 38,-38 C59,-38 76,-21 76,0 C76,32 52,59 21,59 C-24,59 -59,24 -59,-21 C-59,-80 -8,-131 51,-131 C125,-131 186,-70 186,4 C186,96 112,172 21,172" fill="none" stroke="#8b4513" stroke-width=".6" opacity=".08"/>
+</g>
+<g class="spiral2" style="transform-origin:0 0">
+<path d="M0,0 C0,-13 10,-23 23,-23 C36,-23 46,-13 46,0 C46,19 32,36 13,36 C-14,36 -36,14 -36,-13 C-36,-49 -5,-80 31,-80 C76,-80 113,-43 113,2 C113,58 68,104 13,104" fill="none" stroke="#c23b22" stroke-width=".5" opacity=".06"/>
+</g>
+</g>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 3 — SACRED GEOMETRY              ║
+     ╚══════════════════════════════════════════╝ -->
+<g transform="translate(480,220)">
+<!-- Outer ring -->
+<g class="geo1" style="transform-origin:0 0">
+<circle cx="0" cy="0" r="120" fill="none" stroke="#2c2c3a" stroke-width=".4" opacity=".08"/>
+<circle cx="0" cy="0" r="100" fill="none" stroke="#3d3d5c" stroke-width=".3" opacity=".06"/>
+<!-- Hexagram -->
+<polygon points="0,-100 86.6,50 -86.6,50" fill="none" stroke="#8b4513" stroke-width=".3" opacity=".06"/>
+<polygon points="0,100 -86.6,-50 86.6,-50" fill="none" stroke="#8b4513" stroke-width=".3" opacity=".06"/>
+</g>
+<!-- Inner counter-rotating -->
+<g class="geo2" style="transform-origin:0 0">
+<circle cx="0" cy="0" r="70" fill="none" stroke="#3d3d5c" stroke-width=".3" opacity=".07"/>
+<polygon points="0,-70 60.6,35 -60.6,35" fill="none" stroke="#c23b22" stroke-width=".3" opacity=".05"/>
+<polygon points="0,70 -60.6,-35 60.6,-35" fill="none" stroke="#c23b22" stroke-width=".3" opacity=".05"/>
+</g>
+<!-- Pulsing center -->
+<g class="geo3" style="transform-origin:0 0">
+<circle cx="0" cy="0" r="35" fill="none" stroke="#1a1a2e" stroke-width=".5" opacity=".1"/>
+<circle cx="0" cy="0" r="15" fill="none" stroke="#8b4513" stroke-width=".4" opacity=".1"/>
+</g>
+<g class="geo4" style="transform-origin:0 0">
+<circle cx="0" cy="0" r="50" fill="none" stroke="#2c2c3a" stroke-width=".3" opacity=".06" stroke-dasharray="4 4"/>
+</g>
+</g>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 4 — MOON + HALO                  ║
+     ╚══════════════════════════════════════════╝ -->
+<circle class="mn-halo" cx="780" cy="90" r="72" fill="#f5e6c8" opacity=".06"/>
+<circle class="mn-glow" cx="780" cy="90" r="55" fill="#f5e6c8" opacity=".12"/>
+<circle class="mn" cx="780" cy="90" r="40" fill="#f5e6c8" opacity=".4"/>
+<circle class="mn" cx="787" cy="84" r="37" fill="url(#sky)" opacity=".92"/>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 5 — FAR MOUNTAINS                ║
+     ╚══════════════════════════════════════════╝ -->
+<g class="mtn-far" filter="url(#ib)">
+<path d="M-10,290 Q50,200 120,240 Q170,210 240,235 Q300,180 380,220 Q430,190 500,215 Q560,170 640,205 Q700,175 760,200 Q810,180 870,210 Q920,190 970,215 L970,340 L-10,340Z" fill="url(#iw1)" opacity=".45"/>
+</g>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 6 — SINE WAVE INTERFERENCE       ║
+     ╚══════════════════════════════════════════╝ -->
+<g opacity=".08">
+<path class="sw1" d="M0,280 C40,260 80,300 120,280 C160,260 200,300 240,280 C280,260 320,300 360,280 C400,260 440,300 480,280 C520,260 560,300 600,280 C640,260 680,300 720,280 C760,260 800,300 840,280 C880,260 920,300 960,280" fill="none" stroke="#8b4513" stroke-width=".8"/>
+<path class="sw2" d="M0,290 C50,270 100,310 150,290 C200,270 250,310 300,290 C350,270 400,310 450,290 C500,270 550,310 600,290 C650,270 700,310 750,290 C800,270 850,310 900,290 C950,270 960,290 960,290" fill="none" stroke="#2c2c3a" stroke-width=".6"/>
+</g>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 7 — MID MOUNTAINS + TREES        ║
+     ╚══════════════════════════════════════════╝ -->
+<g class="mtn-mid">
+<path d="M-10,310 Q40,240 110,275 Q170,225 250,265 Q320,215 400,255 Q460,210 540,250 Q600,220 680,255 Q740,230 810,260 Q860,240 910,262 Q940,250 970,268 L970,370 L-10,370Z" fill="url(#iw2)" opacity=".55"/>
+</g>
+<!-- Pine trees -->
+<g class="mtn-mid" opacity=".3">
+<path d="M100,273 L95,255 L98,257 L93,240 L97,243 L100,225 L103,243 L107,240 L102,257 L105,255Z" fill="#2c2c3a"/>
+<path d="M122,268 L118,253 L121,255 L117,241 L121,243 L122,228 L123,243 L127,241 L123,255 L126,253Z" fill="#2c2c3a"/>
+<path d="M750,258 L746,243 L749,245 L745,231 L749,233 L750,218 L751,233 L755,231 L751,245 L754,243Z" fill="#2c2c3a"/>
+<path d="M770,263 L767,250 L769,251 L766,240 L769,242 L770,230 L771,242 L774,240 L771,251 L773,250Z" fill="#2c2c3a"/>
+<path d="M435,253 L432,240 L434,241 L431,232 L434,234 L435,222 L436,234 L439,232 L436,241 L438,240Z" fill="#2c2c3a"/>
+</g>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 8 — DATA FLOW STREAMS            ║
+     ╚══════════════════════════════════════════╝ -->
+<g filter="url(#ib2)">
+<!-- Main flow A — large sweeping curve -->
+<path class="fl-a" d="M-20,350 C80,320 180,280 300,300 C420,320 480,260 560,280 C640,300 720,250 820,270 C880,280 940,260 980,270" fill="none" stroke="url(#dfg)" stroke-width="1.5" opacity=".25"/>
+<!-- Flow B — secondary -->
+<path class="fl-b" d="M-10,370 C100,340 200,310 340,330 C480,350 520,290 640,310 C760,330 840,280 980,300" fill="none" stroke="url(#dfg2)" stroke-width="1.2" opacity=".2"/>
+<!-- Flow C — tertiary thin -->
+<path class="fl-c" d="M60,380 C150,360 250,330 380,345 C510,360 580,310 700,325 C820,340 900,300 980,315" fill="none" stroke="#8b4513" stroke-width=".8" opacity=".15"/>
+<!-- Flow D — upper atmosphere -->
+<path class="fl-d" d="M-10,200 C100,180 250,210 380,190 C510,170 620,200 750,185 C830,175 900,190 980,180" fill="none" stroke="#3d3d5c" stroke-width=".6" opacity=".08"/>
+</g>
+
+<!-- Data flow glow layer -->
+<g class="fl-glow">
+<path d="M-20,350 C80,320 180,280 300,300 C420,320 480,260 560,280 C640,300 720,250 820,270 C880,280 940,260 980,270" fill="none" stroke="#c23b22" stroke-width="3" opacity=".06" filter="url(#glow)"/>
+</g>
+
+<!-- Flow nodes — pulsing intersection points -->
+<circle class="nd" cx="300" cy="300" fill="url(#ndg)" opacity=".5"/>
+<circle class="nr" cx="300" cy="300" fill="none" stroke="#c23b22" opacity=".15"/>
+<circle class="nd" cx="560" cy="280" fill="url(#ndg)" opacity=".5" style="animation-delay:.8s"/>
+<circle class="nr" cx="560" cy="280" fill="none" stroke="#c23b22" opacity=".15" style="animation-delay:.8s"/>
+<circle class="nd2" cx="820" cy="270" fill="url(#ndg2)" opacity=".4" style="animation-delay:1.5s"/>
+<circle class="nr" cx="820" cy="270" fill="none" stroke="#8b4513" opacity=".12" style="animation-delay:1.5s"/>
+<circle class="nd2" cx="340" cy="330" fill="url(#ndg2)" opacity=".35" style="animation-delay:.4s"/>
+<circle class="nd2" cx="640" cy="310" fill="url(#ndg)" opacity=".4" style="animation-delay:1.2s"/>
+<circle class="nr" cx="640" cy="310" fill="none" stroke="#c23b22" opacity=".1" style="animation-delay:1.2s"/>
+<circle class="nd2" cx="380" cy="190" fill="url(#ndg2)" opacity=".25" style="animation-delay:2s"/>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 9 — NEAR MOUNTAINS               ║
+     ╚══════════════════════════════════════════╝ -->
+<g class="mtn-near">
+<path d="M-10,360 Q30,310 90,335 Q140,300 210,330 Q280,295 350,325 Q420,305 490,328 Q560,310 630,330 Q700,308 770,332 Q830,315 890,335 Q930,320 970,338 L970,400 L-10,400Z" fill="url(#iw3)" opacity=".7"/>
+</g>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 10 — WATER + RIPPLES             ║
+     ╚══════════════════════════════════════════╝ -->
+<g class="water">
+<rect x="0" y="385" width="960" height="135" fill="url(#wg)" opacity=".5"/>
+<g class="wv">
+<line x1="80" y1="405" x2="200" y2="405" stroke="#8090a0" stroke-width=".5" opacity=".18"/>
+<line x1="320" y1="415" x2="470" y2="415" stroke="#8090a0" stroke-width=".5" opacity=".14"/>
+<line x1="580" y1="408" x2="720" y2="408" stroke="#8090a0" stroke-width=".5" opacity=".16"/>
+<line x1="40" y1="425" x2="140" y2="425" stroke="#8090a0" stroke-width=".4" opacity=".1"/>
+<line x1="480" y1="430" x2="600" y2="430" stroke="#8090a0" stroke-width=".4" opacity=".1"/>
+<line x1="750" y1="420" x2="860" y2="420" stroke="#8090a0" stroke-width=".4" opacity=".1"/>
+<line x1="200" y1="440" x2="350" y2="440" stroke="#8090a0" stroke-width=".3" opacity=".08"/>
+</g>
+</g>
+<ellipse class="rp1" cx="250" cy="410" fill="none" stroke="#5a6a7a" stroke-width=".5"/>
+<ellipse class="rp2" cx="580" cy="420" fill="none" stroke="#5a6a7a" stroke-width=".5"/>
+<ellipse class="rp3" cx="800" cy="412" fill="none" stroke="#5a6a7a" stroke-width=".4"/>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 11 — BAMBOO + INK DRIPS          ║
+     ╚══════════════════════════════════════════╝ -->
+<g class="bamboo" opacity=".55">
+<line x1="890" y1="80" x2="890" y2="450" stroke="#3d3d5c" stroke-width="2.8" opacity=".5"/>
+<line x1="890" y1="150" x2="890" y2="153" stroke="#2c2c3a" stroke-width="4.5" opacity=".3"/>
+<line x1="890" y1="230" x2="890" y2="233" stroke="#2c2c3a" stroke-width="4.5" opacity=".3"/>
+<line x1="890" y1="310" x2="890" y2="313" stroke="#2c2c3a" stroke-width="4.5" opacity=".3"/>
+<line x1="912" y1="120" x2="910" y2="450" stroke="#3d3d5c" stroke-width="2" opacity=".35"/>
+<line x1="912" y1="200" x2="912" y2="203" stroke="#2c2c3a" stroke-width="3.5" opacity=".25"/>
+<line x1="911" y1="290" x2="911" y2="293" stroke="#2c2c3a" stroke-width="3.5" opacity=".25"/>
+<line x1="930" y1="160" x2="929" y2="450" stroke="#3d3d5c" stroke-width="1.5" opacity=".25"/>
+<line x1="929" y1="250" x2="929" y2="252" stroke="#2c2c3a" stroke-width="3" opacity=".2"/>
+</g>
+<g class="bleaf" opacity=".4">
+<path d="M890,148 Q872,136 855,142 Q872,140 890,148Z" fill="#3d3d5c"/>
+<path d="M890,148 Q878,130 862,124 Q877,132 890,148Z" fill="#2c2c3a"/>
+<path d="M890,228 Q908,216 924,222 Q908,220 890,228Z" fill="#3d3d5c"/>
+<path d="M890,228 Q902,210 918,204 Q904,212 890,228Z" fill="#2c2c3a"/>
+<path d="M912,198 Q895,190 880,195 Q895,193 912,198Z" fill="#3d3d5c"/>
+<path d="M911,288 Q926,276 940,282 Q926,280 911,288Z" fill="#3d3d5c"/>
+<path d="M911,288 Q922,270 936,264 Q924,273 911,288Z" fill="#2c2c3a"/>
+<path d="M930,248 Q918,238 905,243 Q918,241 930,248Z" fill="#3d3d5c"/>
+</g>
+<rect class="id1" x="888" y="80" width="1.2" height="30" rx=".6" fill="#2c2c3a" opacity="0"/>
+<rect class="id2" x="910" y="120" width="1" height="22" rx=".5" fill="#3d3d5c" opacity="0"/>
+<rect class="id3" x="928" y="160" width=".8" height="18" rx=".4" fill="#3d3d5c" opacity="0"/>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 12 — FLYING BIRDS (3 GROUPS)     ║
+     ╚══════════════════════════════════════════╝ -->
+<g class="ba" opacity=".4">
+<path d="M140,110 Q146,104 152,108" fill="none" stroke="#2c2c3a" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M152,108 Q158,104 164,110" fill="none" stroke="#2c2c3a" stroke-width="1.3" stroke-linecap="round"/>
+</g>
+<g class="bb" opacity=".3">
+<path d="M170,128 Q175,123 180,126" fill="none" stroke="#2c2c3a" stroke-width="1.1" stroke-linecap="round"/>
+<path d="M180,126 Q185,123 190,128" fill="none" stroke="#2c2c3a" stroke-width="1.1" stroke-linecap="round"/>
+</g>
+<g class="bc" opacity=".25">
+<path d="M155,145 Q159,141 163,143" fill="none" stroke="#2c2c3a" stroke-width=".9" stroke-linecap="round"/>
+<path d="M163,143 Q167,141 171,145" fill="none" stroke="#2c2c3a" stroke-width=".9" stroke-linecap="round"/>
+</g>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 13 — FIBONACCI PARTICLE FIELD    ║
+     ╚══════════════════════════════════════════╝ -->
+<!-- Deep particles (small, slow) -->
+<circle class="p-up" cx="120" cy="340" r=".8" fill="#3d3d5c" opacity="0" style="animation-delay:0s;animation-duration:8s"/>
+<circle class="p-up" cx="280" cy="350" r=".6" fill="#3d3d5c" opacity="0" style="animation-delay:1.5s;animation-duration:9s"/>
+<circle class="p-up" cx="450" cy="360" r=".7" fill="#3d3d5c" opacity="0" style="animation-delay:3s;animation-duration:7s"/>
+<circle class="p-up" cx="620" cy="345" r=".5" fill="#3d3d5c" opacity="0" style="animation-delay:4.5s;animation-duration:10s"/>
+<circle class="p-up" cx="780" cy="355" r=".8" fill="#3d3d5c" opacity="0" style="animation-delay:2s;animation-duration:8s"/>
+<!-- Mid particles (drift) -->
+<circle class="p-dr" cx="180" cy="310" r="1" fill="#8b4513" opacity="0" style="animation-delay:.5s;animation-duration:7s"/>
+<circle class="p-dr" cx="380" cy="320" r=".9" fill="#8b4513" opacity="0" style="animation-delay:2.5s;animation-duration:8s"/>
+<circle class="p-dr" cx="550" cy="305" r="1.1" fill="#c23b22" opacity="0" style="animation-delay:4s;animation-duration:6s"/>
+<circle class="p-dr" cx="700" cy="315" r=".8" fill="#8b4513" opacity="0" style="animation-delay:1s;animation-duration:9s"/>
+<circle class="p-dr" cx="840" cy="300" r="1" fill="#c23b22" opacity="0" style="animation-delay:3.5s;animation-duration:7s"/>
+<!-- Foreground particles (large, fast) -->
+<circle class="p-up" cx="200" cy="290" r="1.3" fill="#1a1a2e" opacity="0" style="animation-delay:1s;animation-duration:5s"/>
+<circle class="p-up" cx="420" cy="300" r="1.5" fill="#2c2c3a" opacity="0" style="animation-delay:2.5s;animation-duration:6s"/>
+<circle class="p-up" cx="650" cy="285" r="1.4" fill="#1a1a2e" opacity="0" style="animation-delay:0s;animation-duration:5.5s"/>
+<!-- Sparkle highlights -->
+<circle class="p-sp" cx="320" cy="270" r=".8" fill="#c23b22" opacity="0" style="animation-delay:1s"/>
+<circle class="p-sp" cx="530" cy="250" r=".6" fill="#8b4513" opacity="0" style="animation-delay:2.5s"/>
+<circle class="p-sp" cx="710" cy="265" r=".7" fill="#c23b22" opacity="0" style="animation-delay:4s"/>
+<circle class="p-sp" cx="150" cy="280" r=".5" fill="#8b4513" opacity="0" style="animation-delay:3s"/>
+<!-- Sinking particles -->
+<circle class="p-sk" cx="250" cy="380" r=".6" fill="#3d3d5c" opacity="0" style="animation-delay:1s;animation-duration:10s"/>
+<circle class="p-sk" cx="500" cy="375" r=".5" fill="#3d3d5c" opacity="0" style="animation-delay:3s;animation-duration:9s"/>
+<circle class="p-sk" cx="730" cy="385" r=".7" fill="#3d3d5c" opacity="0" style="animation-delay:5s;animation-duration:8s"/>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 14 — TEXT WITH DRIFT ANIMATIONS  ║
+     ╚══════════════════════════════════════════╝ -->
+<text class="nm" x="80" y="155" font-size="56" font-weight="900" letter-spacing="5" opacity="0" fill="#1a1a2e" font-family="Georgia,'Times New Roman',serif">ChenYCL</text>
+<path class="sd" d="M80,170 Q200,165 360,170 Q420,173 470,168" fill="none" stroke="#8b4513" stroke-width="2" opacity=".3" stroke-linecap="round"/>
+<text class="tl" x="85" y="205" font-size="15" font-weight="300" letter-spacing="5" opacity="0" fill="#3d3d5c" font-family="Georgia,'Times New Roman',serif">Open Source Enthusiast · Builder</text>
+<text class="tt" x="80" y="245" font-size="16" font-weight="600" letter-spacing="2.5" opacity="0" fill="#8b4513" font-family="Georgia,'Times New Roman',serif">Full-Stack · AI · Web3</text>
+<text class="st" x="80" y="275" font-size="11.5" font-weight="300" letter-spacing="3.5" opacity="0" fill="#3d3d5c" font-family="Georgia,'Times New Roman',serif">TypeScript · React · Node.js · Python</text>
+
+<!-- Vertical verse -->
+<g class="verse" opacity=".16">
+<text x="842" y="110" font-size="11" font-weight="300" fill="#1a1a2e" font-family="Georgia,'Times New Roman',serif" writing-mode="tb" letter-spacing="5">Code as ink</text>
+<text x="822" y="110" font-size="11" font-weight="300" fill="#1a1a2e" font-family="Georgia,'Times New Roman',serif" writing-mode="tb" letter-spacing="5">Craft worlds</text>
+</g>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 15 — RED SEAL STAMP              ║
+     ╚══════════════════════════════════════════╝ -->
+<g class="seal" transform="translate(420,240)" style="transform-origin:23px 23px">
+<rect x="0" y="0" width="46" height="46" rx="2" fill="#c23b22" opacity=".85"/>
+<text x="23" y="30" font-size="18" fill="#f5f0e8" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="900">C</text>
+<rect x="2" y="2" width="42" height="42" rx="1" fill="none" stroke="#f5f0e8" stroke-width="1" opacity=".4"/>
+</g>
+
+<!-- Bottom decorative stroke -->
+<line class="sd2" x1="80" y1="298" x2="410" y2="298" stroke="#8b4513" stroke-width=".6" opacity=".18" stroke-dasharray="500"/>
+
+<!-- ╔══════════════════════════════════════════╗
+     ║  LAYER 16 — BOTTOM MIST VEIL            ║
+     ╚══════════════════════════════════════════╝ -->
+<rect class="water" x="0" y="460" width="960" height="60" fill="url(#sky)" opacity=".6"/>
+
+</svg>
