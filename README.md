@@ -17,7 +17,7 @@
 
 <br/>
 
-<img align="right" width="300" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ChenYCL&layout=compact&theme=transparent&hide_border=true&title_color=3d3d5c&text_color=5a5a7a&bg_color=00000000" />
+<img align="right" width="300" src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=ChenYCL&layout=compact&theme=transparent&hide_border=true&title_color=3d3d5c&text_color=5a5a7a&bg_color=00000000" />
 
 ### About
 
@@ -142,14 +142,8 @@ CLI tool for generating project file templates.
 ### GitHub Stats
 
 <div align="center">
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=ChenYCL&show_icons=true&theme=transparent&hide_border=true&title_color=3d3d5c&icon_color=8b4513&text_color=5a5a7a&bg_color=00000000&ring_color=c23b22" />
-<img height="170" src="https://github-readme-streak-stats.herokuapp.com/?user=ChenYCL&theme=transparent&hide_border=true&ring=c23b22&fire=8b4513&currStreakLabel=3d3d5c&sideLabels=5a5a7a&dates=8090a0" />
-</div>
-
-<br/>
-
-<div align="center">
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=ChenYCL&theme=react-dark&hide_border=true&bg_color=00000000&color=3d3d5c&line=8b4513&point=c23b22&area=true&area_color=e8e0d0" width="95%" />
+<img height="170" src="https://github-readme-stats-fast.vercel.app/api?username=ChenYCL&show_icons=true&theme=transparent&hide_border=true&title_color=3d3d5c&icon_color=8b4513&text_color=5a5a7a&bg_color=00000000&ring_color=c23b22" />
+<img height="170" src="https://github-readme-stats-fast.vercel.app/api/streak?username=ChenYCL&theme=transparent&hide_border=true&ring=c23b22&fire=8b4513&currStreakLabel=3d3d5c&sideLabels=5a5a7a&dates=8090a0" />
 </div>
 
 ---
